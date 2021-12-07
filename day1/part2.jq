@@ -1,9 +1,9 @@
-.[0:-2] as $fst
-| .[1:-1] as $snd
-| .[2:] as $thd
-| [$fst, $snd, $thd]
+[
+    .[0:-2], .[1:-1], .[2:]  # Triple of arrays
+]
+| transpose # Array of triples
+| map(add)  # Array of sums
+| [.[:-1], .[1:]] # solution to part 1
 | transpose
-| map(add) as $arr
-| $arr
-| [to_entries[] | select(.key != 0 and $arr[.key - 1] < .value)]
+| map(select(.[1] > .[0]))
 | length
