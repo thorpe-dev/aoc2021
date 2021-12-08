@@ -1,5 +1,8 @@
-[
-    .[0:-2], .[1:-1], .[2:]  # Triple of arrays
+import "../lib/helpers" as Helpers;
+
+Helpers::slurpnums
+| [
+    .[:-2], .[1:-1], .[2:]  # Triple of arrays
 ]
 | transpose # Array of triples
 | map(add)  # Array of sums
